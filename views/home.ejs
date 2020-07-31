@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>BoB 문제은행 :: 보안 아카이브</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+        
+	</head>
+	<body>
+    <header>
+       <div class="fixed-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <a href="/home" class="p-2 text-dark"><h5><strong>BoB 문제은행</strong></h5></a>
+      <a href="/login" class="p-2 text-dark">공지사항</a>
+      <a href="/login" class="p-2 text-dark">명예의 전당</a>
+      <a href="/login" class="p-2 text-dark">후원하기</a>
+      <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a href="#" class="p-2 text-dark"><span class="fa fa-search"></span></a>
+        <% if (user.provider == undefined || user.provider == '') { %>
+        <a href="/profile" class="p-2 text-blue"><%= user.name %> 님 환영합니다</a>
+        <a href="/logout" class="p-2 text-dark"><span class="fa fa-sign-in">
+        <% } %>
+        </span></a>
+        </nav>
+     </div>
+    </header>
+        
+ 
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+            <br><br><br><br>
+                
+              <li class="nav-item">
+                <a class="nav-link active" href="/home">
+                  <span data-feather="home"></span>
+                  Home <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/upload">
+                  <span data-feather="check-square"></span>
+                  자동채점 <span class="sr-only"></span>
+                </a>
+              </li>
+             <li>
+              <h6 class="sidebar-heading justify-content-between px-3 mt-4 mb-2 text-muted">
+              <span data-feather="image"></span>
+              <a class="text-muted">내 문제 보기</a>
+            </h6>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/myUpload">
+                  <span data-feather="folder"></span>
+                  내 답안지
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/myResult">
+                  <span data-feather="folder"></span>
+                  채점 결과
+                </a>
+              </li>
+    
+            <li>
+              <h6 class="sidebar-heading justify-content-between px-3 mt-4 mb-2 text-muted">
+              <span data-feather="layers"></span>
+              <a class="text-muted">학습관리</a>
+            </h6>
+            </li>
+                <ul class="nav flex-column mb-2">
+              <% if(user.type == '학생'){%>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  오답 통계
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  유형 분석
+                </a>
+              </li>
+                <%}%>
+                <% if(user.type == '관리자'){%>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/answer">
+                      <span data-feather="server"></span>
+                      문제 등록
+                    </a>
+              </li>
+                <%}%>
+                <li class="nav-item">
+                <a class="nav-link" href="/boardIndex">
+                  <span data-feather="help-circle"></span>
+                  QnA 게시판
+                </a>
+              </li>
+            </ul>
+    
+              </ul>
+          </div>
+        </nav>
+            
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            
+        <br><br><br>
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Home</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle"><span data-feather="bar-chart-2"></span>마이페이지</button>
+              </div>
+            </div>
+          </div>
+            
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0"><%=user.name%></h6>
+              </div>
+              <span class="text-success"><%=user.type%></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">업로드 답안지</h6>
+                <small class="text-muted">시험지 보기 > 내 답안지 에서 확인 가능합니다</small>
+              </div>
+              <strong><%=image.length%></strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <div>
+                <h6 class="my-0">채점된 답안지</h6>
+                <small class="text-muted">시험지 보기 > 채점결과 에서 확인 가능합니다</small>
+              </div>
+              <strong><%=image.length%></strong>    
+            </li>
+          </ul>
+          <br>
+          <h4>채점 미리보기</h4>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>시험명</th>
+                  <th>과목</th>
+                  <th>페이지</th>
+                  <th>점수</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+ <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+  </body>
+</html>

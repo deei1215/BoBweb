@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>회원가입 :: BoB 문제은행</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+	</head>
+	<body>
+    <header>
+       <div class="fixed-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <a href="/home" class="p-2 text-dark"><h5><strong>BoB 문제은행</strong></h5></a>
+      <a href="/login" class="p-2 text-dark">공지사항</a>
+      <a href="/login" class="p-2 text-dark">명예의 전당</a>
+      <a href="/login" class="p-2 text-dark">후원하기</a>
+      <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a href="#" class="p-2 text-dark"><span class="fa fa-search"></span></a>
+        <a href="/login" class="p-2 text-dark">로그인</a>
+        <a href="/signup" class="p-2 text-dark">회원가입</a>
+      </nav>
+      <a class="btn btn-outline-primary" href="#">App 다운로드</a>
+     </div>
+    </header>
+        
+    <main role="main">
+        
+        <br><br><br><br>
+
+		  <div class="container"> 
+            <div class="col-sm-6 col-sm-offset-3">
+            <h1><span class="fa fa-sign-in"></span>회원가입</h1><br>
+
+             <% if (message.length > 0) { %>
+			        <div class="alert alert-danger"><%= message %></div>
+			 <% } %>
+    
+            <form action="/signup" method="post">
+            <div class="mb-4">
+              <label for="email" class="sr-only">이메일</label>
+              <input type="email" class="form-control" name="email" placeholder="you@example.com" required autofocus>
+              <div class="invalid-feedback">
+                이메일을 입력해주세요
+              </div>
+            </div>
+                  
+            <div class="mb-4">
+              <label for="username">닉네임</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" name="name" placeholder="Username" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  닉네임을 입력해주세요
+                </div>
+              </div>
+            </div>
+                
+            <div class="mb-4">
+                  <label for="type">회원유형</label>
+                  <select class="custom-select d-block w-100" name="type" required>
+                      <option value>선택</option>
+                      <option>멘토</option><option>멘티</option><option>손님</option>
+                   <div class="invalid-feedback">
+                   모임소개를 입력해주세요
+                   </div>
+                    </select>
+                  </div>
+
+            <div class="mb-4">
+              <label for="password">비밀번호</label>
+              <input type="password" class="form-control" name="password" required>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">회원가입 하기</button>
+              </form>
+              </div>
+            </div>
+        </main>
+	</body>
+</html>
